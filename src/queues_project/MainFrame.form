@@ -128,6 +128,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="employeeID_txtField">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="employeeID_txtFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="firstName_txtField">
           <Properties>
@@ -159,6 +162,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Q Size is..."/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="qSize_txtFieldActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -218,6 +224,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="INSERT"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ins_btnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="del_btn">
           <Properties>
@@ -228,6 +237,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="SEARCH"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="search_btnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="qSize_btn">
           <Properties>

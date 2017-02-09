@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author k00223361 Vincent Lee
  */
 public class MainFrame extends javax.swing.JFrame {
-
+    LinkedQueue link = new LinkedQueue(); 
     /**
      * Creates new form MainFrame
      */
@@ -63,6 +63,12 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3.setText("Last Name");
 
         jLabel4.setText("Age");
+
+        employeeID_txtField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employeeID_txtFieldActionPerformed(evt);
+            }
+        });
 
         firstName_txtField.setText(" ");
         firstName_txtField.addActionListener(new java.awt.event.ActionListener() {
@@ -127,16 +133,31 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         qSize_txtField.setText("Q Size is...");
+        qSize_txtField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qSize_txtFieldActionPerformed(evt);
+            }
+        });
 
         statusTextArea.setColumns(20);
         statusTextArea.setRows(5);
         jScrollPane1.setViewportView(statusTextArea);
 
         ins_btn.setText("INSERT");
+        ins_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ins_btnActionPerformed(evt);
+            }
+        });
 
         del_btn.setText("DEL");
 
         search_btn.setText("SEARCH");
+        search_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search_btnActionPerformed(evt);
+            }
+        });
 
         qSize_btn.setText("Q Size");
 
@@ -214,6 +235,46 @@ public class MainFrame extends javax.swing.JFrame {
     private void age_txtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_age_txtFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_age_txtFieldActionPerformed
+
+    private void search_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_btnActionPerformed
+        // User enter SURNAME
+        // use toLowerCase or toUpperCase.
+        String searchInp;
+        searchInp = (JOptionPane.showInputDialog(null, "Enter a surname").toUpperCase());
+        
+        // user input is tested in searchStack method in LinkedStack Class
+        link.searchQueue(searchInp); //returns result String of student Data for display
+        statusTextArea.setText( (link.searchQueue(searchInp)));
+        
+    }//GEN-LAST:event_search_btnActionPerformed
+
+    private void qSize_txtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qSize_txtFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_qSize_txtFieldActionPerformed
+
+    private void employeeID_txtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeID_txtFieldActionPerformed
+        // Employee ID goes here
+        
+    }//GEN-LAST:event_employeeID_txtFieldActionPerformed
+
+    private void ins_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ins_btnActionPerformed
+        // Add new Employee record to Queue
+        String empIDInput =  JOptionPane.showInputDialog("enter Employee ID");
+            int employeeIDIn = Integer.parseInt(empIDInput);
+            
+        String fNameInput = JOptionPane.showInputDialog("enter First Name");
+            System.out.println("You've entered First Name : " + fNameInput);
+            firstName_txtField.setText(fNameInput);
+            
+        String lNameInput = JOptionPane.showInputDialog("enter Last Name");
+            System.out.println("You've entered Last Name : " + lNameInput);
+            lastName_txtField.setText(lNameInput);
+            
+        String ageInput = JOptionPane.showInputDialog("enter age");
+            int ageIn = Integer.parseInt(ageInput);
+            System.out.println("You've entered Age : " + ageIn);
+            age_txtField.setText(ageInput);
+    }//GEN-LAST:event_ins_btnActionPerformed
 
     /**
      * @param args the command line arguments
