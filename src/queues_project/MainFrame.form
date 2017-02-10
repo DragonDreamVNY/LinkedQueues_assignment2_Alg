@@ -48,7 +48,7 @@
               <Component id="userActionButtonsPANEL" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="qSize_txtField" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -128,12 +128,16 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="employeeID_txtField">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="employeeID_txtFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="firstName_txtField">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="text" type="java.lang.String" value=" "/>
           </Properties>
           <Events>
@@ -142,6 +146,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="lastName_txtField">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="text" type="java.lang.String" value=" "/>
           </Properties>
           <Events>
@@ -150,6 +155,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="age_txtField">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="text" type="java.lang.String" value=" "/>
           </Properties>
           <Events>
@@ -207,7 +213,7 @@
                       <Component id="search_btn" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ins_btn" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                              <Component id="ins_btn" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
                               <Component id="del_btn" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -222,7 +228,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="ins_btn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="INSERT"/>
+            <Property name="text" type="java.lang.String" value="INSERT New"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ins_btnActionPerformed"/>
@@ -230,8 +236,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="del_btn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="DEL"/>
+            <Property name="text" type="java.lang.String" value="DEL from Front"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="del_btnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="search_btn">
           <Properties>
@@ -243,13 +252,19 @@
         </Component>
         <Component class="javax.swing.JButton" name="qSize_btn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Q Size"/>
+            <Property name="text" type="java.lang.String" value="Check Q Size"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="qSize_btnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="top_btn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="FRONT"/>
+            <Property name="text" type="java.lang.String" value="Check FRONT of Q"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="top_btnActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -24,6 +24,10 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        
+        System.out.println("current queue size : " + link.size());
+        qSize_txtField.setText(Integer.toString(link.size()));
+        statusTextArea.setText("There are no Employee Records yet. Please Enter New Records");
     }
 
     /**
@@ -64,12 +68,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Age");
 
+        employeeID_txtField.setEditable(false);
         employeeID_txtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeeID_txtFieldActionPerformed(evt);
             }
         });
 
+        firstName_txtField.setEditable(false);
         firstName_txtField.setText(" ");
         firstName_txtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +83,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        lastName_txtField.setEditable(false);
         lastName_txtField.setText(" ");
         lastName_txtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +91,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        age_txtField.setEditable(false);
         age_txtField.setText(" ");
         age_txtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,14 +151,19 @@ public class MainFrame extends javax.swing.JFrame {
         statusTextArea.setRows(5);
         jScrollPane1.setViewportView(statusTextArea);
 
-        ins_btn.setText("INSERT");
+        ins_btn.setText("INSERT New");
         ins_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ins_btnActionPerformed(evt);
             }
         });
 
-        del_btn.setText("DEL");
+        del_btn.setText("DEL from Front");
+        del_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                del_btnActionPerformed(evt);
+            }
+        });
 
         search_btn.setText("SEARCH");
         search_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -159,9 +172,19 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        qSize_btn.setText("Q Size");
+        qSize_btn.setText("Check Q Size");
+        qSize_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qSize_btnActionPerformed(evt);
+            }
+        });
 
-        top_btn.setText("FRONT");
+        top_btn.setText("Check FRONT of Q");
+        top_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                top_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout userActionButtonsPANELLayout = new javax.swing.GroupLayout(userActionButtonsPANEL);
         userActionButtonsPANEL.setLayout(userActionButtonsPANELLayout);
@@ -186,7 +209,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(search_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(userActionButtonsPANELLayout.createSequentialGroup()
                         .addGroup(userActionButtonsPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ins_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ins_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(del_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(qSize_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -218,7 +241,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(userActionButtonsPANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(qSize_txtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -242,10 +265,14 @@ public class MainFrame extends javax.swing.JFrame {
         String searchInp;
         searchInp = (JOptionPane.showInputDialog(null, "Enter a surname").toUpperCase());
         
-        // user input is tested in searchStack method in LinkedStack Class
-        link.searchQueue(searchInp); //returns result String of student Data for display
-        statusTextArea.setText( (link.searchQueue(searchInp)));
-        
+        if(searchInp == ""){
+        JOptionPane.showMessageDialog(null, "Please enter a surname", "No Input found", JOptionPane.ERROR_MESSAGE);
+        }
+        //else{
+            // user input is tested in searchQueue method in LinkedQueue Class
+            link.searchQueue(searchInp); //returns result String of Employee Data for display
+            statusTextArea.setText( (link.searchQueue(searchInp)));
+        //}
     }//GEN-LAST:event_search_btnActionPerformed
 
     private void qSize_txtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qSize_txtFieldActionPerformed
@@ -261,6 +288,7 @@ public class MainFrame extends javax.swing.JFrame {
         // Add new Employee record to Queue
         String empIDInput =  JOptionPane.showInputDialog("enter Employee ID");
             int employeeIDIn = Integer.parseInt(empIDInput);
+            employeeID_txtField.setText(empIDInput);
             
         String fNameInput = JOptionPane.showInputDialog("enter First Name");
             System.out.println("You've entered First Name : " + fNameInput);
@@ -274,7 +302,44 @@ public class MainFrame extends javax.swing.JFrame {
             int ageIn = Integer.parseInt(ageInput);
             System.out.println("You've entered Age : " + ageIn);
             age_txtField.setText(ageInput);
+            
+        Employee newEmployee = new Employee(employeeIDIn, fNameInput, lNameInput, ageIn);
+        
+        link.append(newEmployee); 
+        JOptionPane.showMessageDialog(null, "New Employee record added to queue", "Record Inserted", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println( "current stack size : " + link.size() );
+        qSize_txtField.setText("Q Size : " + Integer.toString(link.size()) );
+        statusTextArea.setText( link.back().toString() );
     }//GEN-LAST:event_ins_btnActionPerformed
+
+    private void qSize_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qSize_btnActionPerformed
+        // Update QSize to current
+        qSize_txtField.setText("Q Size : " +Integer.toString(link.size()));
+        System.out.println("current queue size : " + link.size());
+        JOptionPane.showMessageDialog(null, "Current number of Records in queue " + link.size(), "Employees in Queue", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_qSize_btnActionPerformed
+
+    private void top_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_top_btnActionPerformed
+        // Show record at front of queue
+        if (link.qSize == 0){
+            JOptionPane.showMessageDialog(null, "Queue is Empty", "No Employee Data Found", JOptionPane.INFORMATION_MESSAGE);
+            statusTextArea.setText("Queue is Empty : " + link.isEmpty() ); //return Boolean true for empty
+        }
+         else{
+             statusTextArea.setText( link.front().toString() );
+         }
+            // update size counter
+            System.out.println("current queue size : " + link.size());
+            qSize_txtField.setText("Q Size : " + Integer.toString(link.size()) );
+    }//GEN-LAST:event_top_btnActionPerformed
+
+    private void del_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_btnActionPerformed
+        // Remove Record from front of Queue
+        link.serve();
+        statusTextArea.setText("Bye! Newbie removed from front" +"\n" + "Next is\n" + link.front());
+        JOptionPane.showMessageDialog(null, "Employee record removed from queue", "Data Removed", JOptionPane.INFORMATION_MESSAGE);
+        qSize_txtField.setText("Record Deleted\tnew Q Size : " + Integer.toString(link.size()) ); //update counter status field
+    }//GEN-LAST:event_del_btnActionPerformed
 
     /**
      * @param args the command line arguments
